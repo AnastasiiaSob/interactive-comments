@@ -1,0 +1,348 @@
+:root {
+  /* Primary colors */
+  --moderate-blue: hsl(238, 40%, 52%);
+  --soft-red: hsl(358, 79%, 66%);
+  --light-grayish-blue: hsl(239, 57%, 85%);
+  --pale-red: hsl(357, 100%, 86%);
+
+  /* Neutral colors */
+  --dark-blue: hsl(212, 24%, 26%);
+  --grayish-blue: hsl(211, 10%, 45%);
+  --light-gray: hsl(223, 19%, 93%);
+  --very-light-gray: hsl(228, 33%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+body {
+  background-color: var(--very-light-gray);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+}
+
+.comments-field {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.write-comment-field {
+  justify-content: center;
+  position: sticky;
+  display: grid;
+  margin-top: 20px;
+  bottom: 0;
+}
+
+@keyframes dropIn {
+  from {
+    transform: translateY(-80px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.write-reply-field {
+  justify-content: center;
+  display: grid;
+  margin-top: 20px;
+  gap: 5px;
+  animation: dropIn 1s ease forwards;
+}
+
+.write-comment {
+  width: 620px;
+  height: 150px;
+  background-color: var(--white);
+  border-radius: 7px;
+  display: grid;
+  grid-template-columns: 0.3fr 65% 1fr;
+  justify-items: center;
+  padding-top: 15px;
+}
+
+.main-comment {
+  width: 620px;
+  max-height: fit-content;
+  background-color: var(--white);
+  border-radius: 7px;
+  display: grid;
+  grid-template-columns: 0fr auto;
+}
+
+.reply-line {
+  width: 3px;
+  background-color: var(--light-gray);
+  margin: 0px 30px 0px 18px;
+  height: 100%;
+}
+
+.reply {
+  display: grid;
+  grid-template-columns: 0fr auto;
+  width: 545px;
+  background-color: var(--white);
+  border-radius: 7px;
+}
+
+.comment-score {
+  display: grid;
+  justify-items: center;
+  background-color: var(--light-gray);
+  width: 30px;
+  height: 85px;
+  margin: 15px;
+  border-radius: 5px;
+}
+
+.vote-number {
+  color: var(--moderate-blue);
+  margin-top: 5px;
+  margin-bottom: -7px;
+  font-weight: bold;
+}
+
+.vote-button {
+  color: var(--light-grayish-blue);
+  border: none;
+  background: none;
+}
+
+.vote-button:hover {
+  cursor: pointer;
+  transition: all ease 0.3s;
+  fill: #5457b6;
+}
+
+.username {
+  color: black;
+  font-weight: bold;
+}
+
+.user-comment-info {
+  display: inline;
+}
+
+.comment-heading {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 3fr 1fr;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.reply-heading {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1.5fr 1fr;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.heading-current-user {
+  display: grid;
+  grid-template-columns: 0.3fr auto 0.3fr 0.7fr 0.5fr 0.5fr;
+  margin-top: 5px;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.standard-transparent {
+  border: none;
+  background: none;
+  color: var(--moderate-blue);
+  font-weight: bold;
+}
+
+.standard-transparent:hover {
+  color: var(--light-grayish-blue);
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+.delete-transparent {
+  border: none;
+  background: none;
+  color: var(--soft-red);
+  font-weight: bold;
+}
+
+.delete-transparent img,
+.standard-transparent img {
+  margin: 0 2px -2px 0;
+}
+
+.delete-transparent:hover,
+.delete-transparent img:hover {
+  color: var(--pale-red);
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+.date-of-comment {
+  color: var(--grayish-blue);
+}
+
+.comment-text {
+  color: var(--grayish-blue);
+  margin: 0 15px 25px 10px;
+}
+
+.user-image {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.user-image-write-comment {
+  width: 40px;
+  height: 40px;
+  margin: 0px 30px 0px 15px;
+}
+
+.replies-area {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.replies {
+  position: relative;
+  display: grid;
+  gap: 15px;
+}
+
+.you-badge {
+  background-color: #5457b6;
+  width: 35px;
+  height: 15px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  padding-bottom: 3px;
+  border-radius: 2px;
+  margin-left: 5px;
+}
+
+.comment-input {
+  width: 100%;
+  height: 100px;
+  border-color: var(--light-gray);
+  border-radius: 7px;
+  resize: none;
+}
+
+.edit-comment {
+  border-color: var(--light-gray);
+  border-radius: 7px;
+  resize: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 87%;
+  margin: 0px 0px 15px 10px;
+  min-height: 80px;
+  max-height: 150px;
+}
+
+textarea::placeholder,
+textarea {
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal {
+  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  transition: all 0.35s ease-in;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: var(--white);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border-radius: 5px;
+  min-width: 255px;
+  max-width: 20%; /* Could be more or less, depending on screen size */
+}
+
+.modal-heading {
+  font-size: 21px;
+  font-weight: bold;
+  color: var(--grayish-blue);
+}
+
+.modal-text {
+  color: var(--grayish-blue);
+}
+
+.modal-cancel {
+  width: 110px;
+  height: 40px;
+  background-color: var(--grayish-blue);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  margin: 20px 15px 15px auto;
+}
+
+.modal-confirm {
+  width: 110px;
+  height: 40px;
+  background-color: var(--soft-red);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  margin: 20px 0px 15px 15px;
+}
+
+.modal-cancel:hover {
+  background-color: var(--light-gray);
+  transition: all ease 0.3s;
+  cursor: pointer;
+  color: var(--grayish-blue);
+}
+
+.modal-confirm:hover {
+  background-color: var(--pale-red);
+  transition: all ease 0.3s;
+  cursor: pointer;
+  color: white;
+}
+
+.standard-filled {
+  width: 85px;
+  height: 40px;
+  background-color: var(--moderate-blue);
+  color: white;
+  border: none;
+  border-radius: 7px;
+}
+
+.standard-filled.update {
+  grid-column: 2;
+  justify-self: flex-end;
+  margin: 0px 30px 20px 0px;
+}
+
+.standard-filled:hover {
+  background-color: var(--light-grayish-blue);
+  cursor: pointer;
+}
