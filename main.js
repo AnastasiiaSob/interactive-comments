@@ -1,18 +1,18 @@
-import { Comment } from "./comment.js"
-import { CurrentUserComment } from "./current-user-comment.js"
-import { Reply } from "./reply.js"
+import { Comment } from "./comment/comment.js"
+import { GenericComment } from "./comment/genericComment.js"
+import { CurrentUserComment } from "./comment/currentUserComment.js"
+import { Reply } from "./reply/reply.js"
 
 
-export function blablaReply(obj){
+export function currentUserReplyHandler(commentId){
     fetch('./data.json')
     .then(response => response.json())
     .then(data => {
-        const haha = new CurrentUserComment(data.currentUser)
-        haha.createFieldForReply(obj);
+        const cuc = new CurrentUserComment(data.currentUser)
+        cuc.createFieldForReply(commentId);
     })
   
 }
-
 
  function getData(){
     fetch('./data.json')
@@ -20,11 +20,12 @@ export function blablaReply(obj){
     .then(data => {
     const globalField = document.querySelector(".comments-field");
 
-    data.comments.forEach(comment => {
-        const mainComment = new Comment(comment);
+    data.comments.forEach(commentData => {
+
+        const mainComment = new Comment(commentData);
         mainComment.createMainComment(globalField)
 
-        if(comment.replies.length !== 0){
+        if(commentData.replies.length !== 0){
             const repliesArea = document.createElement('div')
             repliesArea.className = "replies-area"
             globalField.appendChild(repliesArea)
@@ -35,9 +36,10 @@ export function blablaReply(obj){
 
             const replies = document.createElement('div')
             replies.className = "replies"
+            replies.setAttribute('id',"replies-"+commentData.id)
             repliesArea.appendChild(replies)
 
-            comment.replies.forEach(reply => {
+            commentData.replies.forEach(reply => {
                 const rep = new Reply(reply);
                 if(data.currentUser.username === reply.user.username){
                     rep.createReply(replies, true)
@@ -48,9 +50,8 @@ export function blablaReply(obj){
         }
     });
 
-    // writeCommentSection(data.currentUser)
-    const cu = new CurrentUserComment(data.currentUser)
-    cu.writeCommentSection()
+    const cuc = new CurrentUserComment(data.currentUser)
+    cuc.writeCommentSection()
 })
 }
 

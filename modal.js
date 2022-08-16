@@ -1,4 +1,4 @@
-export function openDeleteModal(comment){
+export function openDeleteModal(id){
     const modal = document.getElementById('modal')
     modal.classList.add('is-visible')
 
@@ -7,8 +7,8 @@ export function openDeleteModal(comment){
     })
     document.querySelector(".modal-confirm").addEventListener('click', () => {
         modal.classList.remove('is-visible')
-        if(document.getElementById(comment.id)){
-            document.getElementById(comment.id).remove();
+        if(document.getElementById(id)){
+            document.getElementById(id).remove();
         }     
     })
     document.addEventListener("click", e => {
