@@ -18,7 +18,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   position: fixed;
-  bottom: 70px;
+  top: 20px;
+  bottom: 50px;
   width: 100%;
 }
 
@@ -35,7 +36,6 @@ body {
   justify-content: center;
   position: sticky;
   display: grid;
-  margin-top: 20px;
   bottom: 0;
 }
 
@@ -56,7 +56,7 @@ body {
   animation: dropIn 1s ease forwards;
 }
 
-.write-comment {
+.write-comment, .small-reply {
   width: 620px;
   height: 150px;
   background-color: var(--white);
@@ -65,6 +65,12 @@ body {
   grid-template-columns: 0.3fr 65% 1fr;
   justify-items: center;
   padding-top: 15px;
+  margin-top: 10px;
+}
+
+.small-reply {
+  width: 545px;
+  grid-template-columns: 0.3fr 60% 1fr;
 }
 
 .main-comment {
@@ -79,7 +85,7 @@ body {
 .reply-line {
   width: 3px;
   background-color: var(--light-gray);
-  margin: 0px 30px 0px 18px;
+  margin: 0px 30px;
   height: 100%;
 }
 
@@ -207,6 +213,7 @@ body {
 .replies-area {
   display: grid;
   grid-template-columns: 1fr auto;
+  margin: 15px 0;
 }
 
 .replies {
