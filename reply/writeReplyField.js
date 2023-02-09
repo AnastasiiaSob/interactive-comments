@@ -1,5 +1,5 @@
+import { GenericComment } from "../utils/genericComment.js";
 import { Reply } from "./reply.js";
-import { GenericComment } from "../comment/genericComment.js";
 
 export class CurrentUserReply extends GenericComment {
   currentUser;
@@ -112,6 +112,6 @@ export class CurrentUserReply extends GenericComment {
       document.getElementById("comment-textarea").value = "";
     };
     writeComment.appendChild(sendButton);
-    writeComment.scrollIntoView();
+  //  writeComment.scrollIntoView();
   }
 }

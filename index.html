@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <!-- <script src="userComment.ts"></script> -->
-  <title>Frontend Mentor | Interactive comments section</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- <script src="userComment.ts"></script> -->
+    <title>Frontend Mentor | Interactive comments section</title>
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-
-  <!-- Pull dynamic content from the data.json file -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="queries.css" />
+  </head>
   
-  <div class="app">
-    <div class = "comments-field">
-
-      <div id="modal" class="modal">
-        <div class="modal-content">
-          <p class="modal-heading">Delete comment</p>
-          <div class="modal-text">Are you sure you want to delete this comment? This will remove the comment and can't be undone.</div>
-          <button class="modal-cancel">NO, CANCEL</button>
-          <button class="modal-confirm">YES, DELETE</button>
+  <body>
+    <!-- Pull dynamic content from the data.json file -->
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+      </label>
+      <p>Enable Dark Mode!</p>
+    </div>
+    
+    <div class="app">
+      <div class="comments-field">
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <p class="modal-heading">Delete comment</p>
+            <div class="modal-text">
+              Are you sure you want to delete this comment? This will remove the
+              comment and can't be undone.
+            </div>
+            <button class="modal-cancel">NO, CANCEL</button>
+            <button class="modal-confirm">YES, DELETE</button>
+          </div>
         </div>
       </div>
-      
+
+     
     </div>
-  </div>
-  
-  <script type= "module" src="main.js"></script>
-</body>
+
+    <script type="module" src="main.js"></script>
+    <script type="module" src="darkModeToggle.js"></script>
+
+  </body>
 </html>

@@ -1,7 +1,7 @@
 import { Comment } from "./comment/comment.js";
-import { CurrentUserComment } from "./comment/currentUserComment.js";
+import { CurrentUserComment } from "./comment/writeCommentField.js";
 import { Reply } from "./reply/reply.js";
-import { CurrentUserReply } from "./reply/currentUserReply.js";
+import { CurrentUserReply } from "./reply/writeReplyField.js";
 
 export function currentUserReplyHandler(commentId, replyingTo) {
   fetch("./data.json")

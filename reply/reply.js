@@ -1,7 +1,4 @@
-import { openDeleteModal } from "../modal.js";
-import { Comment } from "../comment/comment.js";
-import { GenericComment } from "../comment/genericComment.js";
-import { currentUserReplyHandler } from "../main.js";
+import { GenericComment } from "../utils/genericComment.js";
 
 export class Reply extends GenericComment {
   id;
@@ -10,7 +7,7 @@ export class Reply extends GenericComment {
   score;
   user;
   replyingTo;
-
+  
   constructor(data) {
     super(data);
     this.replyingTo = data.replyingTo;

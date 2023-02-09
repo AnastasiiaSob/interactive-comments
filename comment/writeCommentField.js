@@ -1,6 +1,5 @@
-import { Reply } from "../reply/reply.js";
+import { GenericComment } from "../utils/genericComment.js";
 import { Comment } from "./comment.js";
-import { GenericComment } from "./genericComment.js";
 
 export class CurrentUserComment extends GenericComment {
   currentUser;
