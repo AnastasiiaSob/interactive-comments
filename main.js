@@ -3,25 +3,23 @@ import { CurrentUserComment } from "./comment/writeCommentField.js";
 import { Reply } from "./reply/reply.js";
 import { CurrentUserReply } from "./reply/writeReplyField.js";
 
-export function currentUserReplyHandler(commentId, replyingTo) {
-  fetch("./data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      const newReply = new CurrentUserReply(data.currentUser);
-      const rootComment = document.getElementById(commentId);
-      if (rootComment.className == "reply") {
-        newReply.createFieldForReply(commentId, replyingTo, true);
-      } else {
-        newReply.createFieldForReply(commentId, replyingTo);
-      }
-    });
+
+export async function currentUserReplyHandler(commentId, replyingTo) {
+  const response = await fetch("./data.json");
+  const { currentUser } = await response.json();
+
+  const newReply = new CurrentUserReply(currentUser);
+  const rootComment = document.getElementById(commentId);
+
+  const isReply = rootComment.classList.contains("reply");
+  newReply.createFieldForReply(commentId, replyingTo, isReply);
 }
 
 function getData() {
   fetch("./data.json")
     .then((response) => response.json())
     .then((data) => {
-      const globalField = document.querySelector(".comments-field");
+      const globalField = document.querySelector(".comments-area");
 
       data.comments.forEach((commentData) => {
         const mainComment = new Comment(commentData);

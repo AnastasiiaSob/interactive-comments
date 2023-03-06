@@ -25,21 +25,23 @@ export class CurrentUserComment extends GenericComment {
   }
 
   deligateCreatingNewComment() {
-    const message = document.getElementById("comment-textarea").value;
-    if (message) {
-      const globalField = document.querySelector(".comments-field");
-      const id = Math.floor(Math.floor(Math.random() * 1000));
-      const comment = new Comment({
-        id: id,
-        content: message,
-        createdAt: "now",
-        score: 0,
-        user: this.currentUser,
-        replies: [],
-      });
-      comment.createMainComment(globalField, true);
-      document.getElementById("comment-textarea").value = "";
+    const message = document.getElementById("comment-textarea").value.trim();
+    if (!message) {
+      return;
     }
+    const globalField = document.querySelector(".comments-area");
+    const id = Math.floor(Math.random() * 1000);
+    const commentData = {
+      id,
+      content: message,
+      createdAt: "now",
+      score: 0,
+      user: this.currentUser,
+      replies: [],
+    };
+    const comment = new Comment(commentData);
+    comment.createMainComment(globalField, true);
+    document.getElementById("comment-textarea").value = "";
   }
 
   createSendButton() {
