@@ -156,7 +156,8 @@ body {
 
 }
 
-.vote-button:hover, :focus{
+.vote-button:hover, 
+.vote-button:focus{
   cursor: pointer;
   transition: all ease 0.3s;
   background-color: transparent !important;
@@ -208,21 +209,21 @@ body {
   font-weight: bold;
 }
 
-.standard-transparent:hover, :focus .text{
+.standard-transparent:hover, .standard-transparent:focus .text{
   color: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
 }
 
-.standard-transparent:hover, :focus .reply-icon {
+.standard-transparent:hover, .standard-transparent:focus .reply-icon {
   fill: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
 }
 
-.standard-transparent:hover, :focus .edit-icon {
+.standard-transparent:hover, .standard-transparent:focus .edit-icon {
   fill: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
@@ -240,14 +241,14 @@ body {
   font-weight: bold;
 }
 
-.delete-transparent:hover, :focus .delete-icon{
+.delete-transparent:hover, .delete-transparent:focus .delete-icon{
   fill: var(--pale-red);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
 }
 
-.delete-transparent:hover, :focus .label{
+.delete-transparent:hover, .delete-transparent:focus .label{
   color: var(--pale-red);
   transition: all ease 0.3s;
   cursor: pointer;
@@ -389,14 +390,14 @@ textarea {
   color: var(--app-background);
 }
 
-.modal-cancel:hover, :focus {
+.modal-cancel:hover, .modal-cancel:focus {
   background-color: var(--background-secondary);
   transition: all ease 0.3s;
   cursor: pointer;
   color: var(--medium-bright-text);
 }
 
-.modal-confirm:hover, :focus {
+.modal-confirm:hover, .modal-confirm:focus {
   background-color: var(--pale-red);
   transition: all ease 0.3s;
   cursor: pointer;
@@ -419,7 +420,7 @@ textarea {
   margin: 0px 30px 20px 0px;
 }
 
-.standard-filled:hover, :focus {
+.standard-filled:hover, .standard-filled:focus {
   background-color: var(--onPrimary);
   color: var(--onPrimary-text);
   cursor: pointer;
