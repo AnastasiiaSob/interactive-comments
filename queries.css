@@ -55,7 +55,7 @@
 
   .comment-score p {
     rotate: 90deg;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
 
   .comment-heading {
@@ -72,10 +72,40 @@
     margin: 0 10px 0px 10px;
   }
 
+  /* reply area */ 
+
 
   .reply {
     width: 285px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
+    padding: 10px;
   }
 
-  
+  .reply-heading {
+    grid-template-columns: 0.2fr 1fr 1fr;
+  }
+
+  .reply-heading button {
+    position: relative;
+    top: 158px;
+    left: 210px;
+  }
+
+  .heading-current-user {
+    grid-template-columns: 0.2fr 1fr 0.8fr 1.3fr;
+  }
+
+  .heading-current-user > button:nth-last-of-type(1) {
+    position: relative;
+    top: 158px;
+    left: 150px;
+  }
+
+  .heading-current-user > button:nth-last-of-type(2) {
+    position: relative;
+    top: 158px;
+    left: 130px;
+  }
 }
