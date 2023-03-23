@@ -4,10 +4,12 @@
   --soft-red: hsl(358, 79%, 66%);
   --onPrimary: hsl(270, 84%, 77%);
   --pale-red: hsl(357, 100%, 86%);
+  --primary-text: hsl(228, 33%, 97%);
+  --onPrimary-text: hsl(255, 14%, 22%);
 
   /* Neutral colors */
-  --username-text: hsl(212, 24%, 26%);
-  --comment-text: hsl(211, 10%, 45%);
+  --bright-text: hsl(212, 24%, 26%);
+  --medium-bright-text: hsl(211, 10%, 45%);
   --background-secondary: hsl(223, 19%, 93%);
   --app-background: hsl(228, 33%, 97%);
   --comment-background: hsl(0, 0%, 100%);
@@ -18,10 +20,12 @@
   --soft-red: hsl(358, 79%, 66%);
   --onPrimary: hsl(273, 67%, 94%);
   --pale-red: hsl(354, 76%, 76%);
+  --primary-text: hsl(255, 14%, 22%);
+  --onPrimary-text: hsl(274, 81%, 46%);
 
   /* Neutral colors */
-  --username-text: hsl(211, 57%, 90%);
-  --comment-text: rgb(207, 203, 203);
+  --bright-text: hsl(211, 57%, 90%);
+  --medium-bright-text: rgb(207, 203, 203);
   --background-secondary: hsla(240, 5%, 29%, 0.458);
   --app-background: hsl(0, 0%, 7%);
   --comment-background: hsla(0, 3%, 13%, 0.941);
@@ -131,7 +135,7 @@ body {
 }
 
 .vote-number {
-  color: var(--username-text);
+  color: var(--bright-text);
   margin: 0;
   font-weight: bold;
 }
@@ -163,7 +167,7 @@ body {
 }
 
 .username {
-  color: var(--username-text);
+  color: var(--bright-text);
   font-weight: bold;
 }
 
@@ -204,6 +208,13 @@ body {
   font-weight: bold;
 }
 
+.standard-transparent:hover, :focus .text{
+  color: var(--onPrimary);
+  transition: all ease 0.3s;
+  cursor: pointer;
+  background-color: transparent !important;
+}
+
 .standard-transparent:hover, :focus .reply-icon {
   fill: var(--onPrimary);
   transition: all ease 0.3s;
@@ -211,8 +222,8 @@ body {
   background-color: transparent !important;
 }
 
-.standard-transparent:hover, :focus .label{
-  color: var(--onPrimary);
+.standard-transparent:hover, :focus .edit-icon {
+  fill: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
@@ -244,11 +255,11 @@ body {
 }
 
 .date-of-comment {
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
 }
 
 .comment-text {
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
   margin: 0 15px 25px 10px;
 }
 
@@ -314,7 +325,7 @@ textarea {
   padding: 10px;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
 }
 
 .modal {
@@ -349,17 +360,17 @@ textarea {
 .modal-heading {
   font-size: 21px;
   font-weight: bold;
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
 }
 
 .modal-text {
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
 }
 
 .modal-cancel {
   width: 110px;
   height: 40px;
-  background-color: var(--comment-text);
+  background-color: var(--medium-bright-text);
   color: white;
   border: none;
   border-radius: 7px;
@@ -382,7 +393,7 @@ textarea {
   background-color: var(--background-secondary);
   transition: all ease 0.3s;
   cursor: pointer;
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
 }
 
 .modal-confirm:hover, :focus {
@@ -396,7 +407,7 @@ textarea {
   width: 85px;
   height: 40px;
   background-color: var(--primary);
-  color: var(--app-background);
+  color: var(--primary-text);
   font-weight: bold;
   border: none;
   border-radius: 7px;
@@ -408,8 +419,9 @@ textarea {
   margin: 0px 30px 20px 0px;
 }
 
-.standard-filled:hover, :focus{
+.standard-filled:hover, :focus {
   background-color: var(--onPrimary);
+  color: var(--onPrimary-text);
   cursor: pointer;
 }
 
@@ -423,7 +435,7 @@ textarea {
 .theme-switch-wrapper p {
   margin-left: 10px;
   font-size: 1rem;
-  color: var(--comment-text);
+  color: var(--medium-bright-text);
   font-family: Arial, Helvetica, sans-serif;
 }
 
