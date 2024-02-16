@@ -31,7 +31,6 @@
     width: 350px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* grid-template-rows: repeat(2, 1fr); */
     padding: 10px;
   }
 
@@ -55,7 +54,6 @@
 
   .comment-score p {
     rotate: 90deg;
-    /* margin-bottom: 10px; */
   }
 
   .comment-heading {
@@ -79,7 +77,6 @@
     width: 285px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* grid-template-rows: repeat(2, 1fr); */
     padding: 10px;
   }
 
@@ -94,18 +91,14 @@
   }
 
   .heading-current-user {
-    grid-template-columns: 0.2fr 1fr 0.8fr 1.3fr;
+   grid-template-columns: repeat(6, auto);
   }
 
-  .heading-current-user > button:nth-last-of-type(1) {
-    position: relative;
-    top: 158px;
-    left: 150px;
+  .heading-current-user > button:nth-last-of-type(1) span{
+    display: none;
   }
 
-  .heading-current-user > button:nth-last-of-type(2) {
-    position: relative;
-    top: 158px;
-    left: 130px;
+  .heading-current-user > button:nth-last-of-type(2) span {
+   display: none;
   }
 }

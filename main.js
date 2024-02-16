@@ -1,67 +1,74 @@
-import { Comment } from "./comment/comment.js";
-import { CurrentUserComment } from "./comment/writeCommentField.js";
-import { Reply } from "./reply/reply.js";
-import { CurrentUserReply } from "./reply/writeReplyField.js";
+import { Comment } from './comment/comment.js'
+import { Reply } from './reply/reply.js'
+import { CurrentUserReply } from './reply/writeReplyField.js'
 
+const response = await fetch('./data.json')
+const data = await response.json()
 
-export async function currentUserReplyHandler(commentId, replyingTo) {
-  const response = await fetch("./data.json");
-  const { currentUser } = await response.json();
+const globalField = document.querySelector('.comments-area')
 
-  const newReply = new CurrentUserReply(currentUser);
-  const rootComment = document.getElementById(commentId);
+data.comments.forEach((commentData) => {
+  const mainComment = new Comment(commentData)
+  if (data.currentUser.username === commentData.user.username) {
+    mainComment.createMainComment(globalField, true)
+  } else {
+    mainComment.createMainComment(globalField)
+  }
 
-  const isReply = rootComment.classList.contains("reply");
-  newReply.createFieldForReply(commentId, replyingTo, isReply);
+  if (commentData.replies.length !== 0) {
+    const parentComment = document.getElementById(commentData.id).parentElement
+
+    const repliesArea = document.createElement('div')
+    repliesArea.className = 'replies-area'
+    repliesArea.setAttribute('id', 'ra-' + commentData.id)
+    parentComment.appendChild(repliesArea)
+
+    const repliesLine = document.createElement('div')
+    repliesLine.className = 'reply-line'
+    repliesArea.appendChild(repliesLine)
+
+    const replies = document.createElement('div')
+    replies.className = 'replies'
+    replies.setAttribute('id', 'replies-' + commentData.id)
+    repliesArea.appendChild(replies)
+
+    commentData.replies.forEach((reply) => {
+      const rep = new Reply(reply)
+      if (data.currentUser.username === reply.user.username) {
+        rep.createReply(replies, true)
+      } else {
+        rep.createReply(replies)
+      }
+    })
+  }
+})
+
+export function currentUserReplyHandler(commentId, replyingTo) {
+  const newReply = new CurrentUserReply(data.currentUser)
+  const rootComment = document.getElementById(commentId)
+  const isReply = rootComment.classList.contains('reply')
+  newReply.createFieldForReply(commentId, replyingTo, isReply)
 }
 
-function getData() {
-  fetch("./data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      const globalField = document.querySelector(".comments-area");
 
-      data.comments.forEach((commentData) => {
-        const mainComment = new Comment(commentData);
-        if (data.currentUser.username === commentData.user.username) {
-          mainComment.createMainComment(globalField, true);
-        } else {
-          mainComment.createMainComment(globalField);
-        }
+function creatingNewComment() {
+  const message = document.getElementById('comment-textarea').value.trim()
+  if (!message) {
+    return
+  }
+  const id = Math.floor(Math.random() * 1000)
 
-        if (commentData.replies.length !== 0) {
-          const parentComment = document.getElementById(
-            commentData.id
-          ).parentElement;
-
-          const repliesArea = document.createElement("div");
-          repliesArea.className = "replies-area";
-          repliesArea.setAttribute("id", "ra-" + commentData.id);
-          parentComment.appendChild(repliesArea);
-
-          const repliesLine = document.createElement("div");
-          repliesLine.className = "reply-line";
-          repliesArea.appendChild(repliesLine);
-
-          const replies = document.createElement("div");
-          replies.className = "replies";
-          replies.setAttribute("id", "replies-" + commentData.id);
-          repliesArea.appendChild(replies);
-
-          commentData.replies.forEach((reply) => {
-            const rep = new Reply(reply);
-            if (data.currentUser.username === reply.user.username) {
-              rep.createReply(replies, true);
-            } else {
-              rep.createReply(replies);
-            }
-          });
-        }
-      });
-
-      const cuc = new CurrentUserComment(data.currentUser);
-      cuc.writeCommentSection();
-    });
+  const commentData = {
+    id,
+    content: message,
+    createdAt: 'now',
+    score: 0,
+    user: data.currentUser,
+    replies: [],
+  }
+  const comment = new Comment(commentData)
+  comment.createMainComment(globalField, true)
+  document.getElementById('comment-textarea').value = ''
 }
 
-getData();
+window.creatingNewComment = creatingNewComment

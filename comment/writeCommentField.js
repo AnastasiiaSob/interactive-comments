@@ -44,29 +44,4 @@ export class CurrentUserComment extends GenericComment {
     document.getElementById("comment-textarea").value = "";
   }
 
-  createSendButton() {
-    const sendButton = document.createElement("button");
-    sendButton.innerHTML = "SEND";
-    sendButton.className = "standard-filled";
-    return sendButton;
-  }
-
-  writeCommentSection() {
-    const writeCommentBox = document.createElement("div");
-    writeCommentBox.className = "write-comment-field";
-    document.body.append(writeCommentBox);
-
-    const writeComment = document.createElement("div");
-    writeComment.className = "write-comment";
-    writeCommentBox.append(writeComment);
-
-    this.createUserImageForWriteComment(writeComment);
-
-    this.createCommentInputField(writeComment);
-    const sendButton = this.createSendButton();
-    sendButton.onclick = () => {
-      this.deligateCreatingNewComment();
-    };
-    writeComment.appendChild(sendButton);
-  }
 }

@@ -1,3 +1,16 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+body {
+  background-color: var(--app-background);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+}
+
 :root {
   /* Primary colors */
   --primary: hsl(274, 81%, 46%);
@@ -15,7 +28,7 @@
   --comment-background: hsl(0, 0%, 100%);
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --primary: hsl(270, 84%, 77%);
   --soft-red: hsl(358, 79%, 66%);
   --onPrimary: hsl(273, 67%, 94%);
@@ -27,24 +40,24 @@
   --bright-text: hsl(211, 57%, 90%);
   --medium-bright-text: rgb(207, 203, 203);
   --background-secondary: hsla(240, 5%, 29%, 0.458);
-  --app-background: hsl(0, 0%, 7%);
+  --app-background: black;
   --comment-background: hsla(0, 3%, 13%, 0.941);
 }
 
-body {
-  display: grid;
-  background-color: var(--app-background);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  position: fixed;
-  top: 20px;
-  bottom: 50px;
-  width: 100%;
-  gap: 10px;
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.app{
-  align-self: flex-end;
+.theme-switch-wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-secondary);
+  z-index: 2;
 }
 
 .comments-area {
@@ -52,15 +65,20 @@ body {
   gap: 15px;
   align-items: center;
   flex-direction: column;
-  overflow-y: auto;
-  max-height: 70vh;
+  flex: 1;
+  justify-content: flex-end;
+  margin: 10px 0;
 }
 
 .write-comment-field {
+  display: flex;
   justify-content: center;
+  margin-top: auto;
+  width: 100%;
   position: sticky;
-  display: grid;
   bottom: 0;
+  background-color: var(--background-secondary);
+
 }
 
 @keyframes dropIn {
@@ -147,24 +165,23 @@ body {
   padding-left: 7px;
 }
 
- .vote-icon {
+.vote-icon {
   fill: var(--primary);
 }
 
 .vote-icon:hover {
   fill: var(--onPrimary);
-
 }
 
-.vote-button:hover, 
-.vote-button:focus{
+.vote-button:hover,
+.vote-button:focus {
   cursor: pointer;
   transition: all ease 0.3s;
   background-color: transparent !important;
 }
 
 .vote-button:focus .vote-icon {
-  fill:var(--onPrimary);
+  fill: var(--onPrimary);
 }
 
 .username {
@@ -209,21 +226,24 @@ body {
   font-weight: bold;
 }
 
-.standard-transparent:hover, .standard-transparent:focus .text{
+.standard-transparent:hover,
+.standard-transparent:focus .text {
   color: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
 }
 
-.standard-transparent:hover, .standard-transparent:focus .reply-icon {
+.standard-transparent:hover,
+.standard-transparent:focus .reply-icon {
   fill: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
 }
 
-.standard-transparent:hover, .standard-transparent:focus .edit-icon {
+.standard-transparent:hover,
+.standard-transparent:focus .edit-icon {
   fill: var(--onPrimary);
   transition: all ease 0.3s;
   cursor: pointer;
@@ -241,14 +261,16 @@ body {
   font-weight: bold;
 }
 
-.delete-transparent:hover, .delete-transparent:focus .delete-icon{
+.delete-transparent:hover,
+.delete-transparent:focus .delete-icon {
   fill: var(--pale-red);
   transition: all ease 0.3s;
   cursor: pointer;
   background-color: transparent !important;
 }
 
-.delete-transparent:hover, .delete-transparent:focus .label{
+.delete-transparent:hover,
+.delete-transparent:focus .label {
   color: var(--pale-red);
   transition: all ease 0.3s;
   cursor: pointer;
@@ -390,14 +412,16 @@ textarea {
   color: var(--app-background);
 }
 
-.modal-cancel:hover, .modal-cancel:focus {
+.modal-cancel:hover,
+.modal-cancel:focus {
   background-color: var(--background-secondary);
   transition: all ease 0.3s;
   cursor: pointer;
   color: var(--medium-bright-text);
 }
 
-.modal-confirm:hover, .modal-confirm:focus {
+.modal-confirm:hover,
+.modal-confirm:focus {
   background-color: var(--pale-red);
   transition: all ease 0.3s;
   cursor: pointer;
@@ -420,17 +444,11 @@ textarea {
   margin: 0px 30px 20px 0px;
 }
 
-.standard-filled:hover, .standard-filled:focus {
+.standard-filled:hover,
+.standard-filled:focus {
   background-color: var(--onPrimary);
   color: var(--onPrimary-text);
   cursor: pointer;
-}
-
-.theme-switch-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -10px;
 }
 
 .theme-switch-wrapper p {
@@ -465,7 +483,7 @@ textarea {
 .slider:before {
   background-color: rgb(247, 221, 73);
   bottom: 4px;
-  content: "";
+  content: '';
   height: 26px;
   left: 4px;
   position: absolute;

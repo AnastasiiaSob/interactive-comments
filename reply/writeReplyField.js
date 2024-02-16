@@ -115,6 +115,6 @@ export class CurrentUserReply extends GenericComment {
       document.getElementById("comment-textarea").value = "";
     };
     writeComment.appendChild(sendButton);
-  //  writeComment.scrollIntoView();
+   writeComment.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 }
